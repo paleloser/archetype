@@ -1,0 +1,64 @@
+---
+title: '<short, inviting title, e.g. "Say hello to bulk invitations">'
+description: '<one line: the single most interesting thing in this entry>'
+date: <YYYY-MM-DD>                      # today — last time this entry was touched
+image: /images/<photo>                  # optional — the heading picture, same in every locale
+since: <ref — set once at creation, fixed for the draft's whole lifetime>
+until: <ref used for this run>
+changes:
+  - type: new
+    summary: '<one line, glossary terms, no GitHub references>'
+    apps: [<server, webapp, web>]
+    featured: true                      # has a section of its own below
+    illustrate: true                    # worth an inline visual (featured changes only)
+  - type: fixed
+    summary: '<one line — a change that only made it into the roundup, or not even there>'
+    apps: [<server, webapp, web>]
+  # EVERY user-facing change in the range goes here, however small — this list is what
+  # agents read, and it stays complete even though the prose is selective.
+  # Continuing a draft: this is the FULL merged list (old + new), not just this run's.
+---
+
+import ThemedImage from '@/components/ThemedImage'
+
+{/* The blog page renders the title, the date, the description and the heading picture from the frontmatter. */}
+
+<Lede: two or three sentences giving this release an angle — what this batch of work is
+about and what it means for the reader. Not a table of contents, no "here's what's new".>
+
+## <A claim in the reader's words, e.g. "Invite your whole client list in one go">
+
+<Two to four sentences. Lead with what the reader can now do, then the detail that makes
+it real. No feature-name headings, no emoji here — this is the most interesting thing
+that shipped, written like you're telling a customer about it.>
+
+<ThemedImage
+  alt='<what the reader is looking at, in this locale>'
+  light='/images/screenshots/<feature-slug>/<asset>-<locale>-light.png'
+  dark='/images/screenshots/<feature-slug>/<asset>-<locale>-dark.png'
+  width={ <actual pixel width of the file> }
+  height={ <actual pixel height> } />
+
+## <The next story>
+
+<Two to four sentences. This one may have no visual at all — most don't.>
+
+## <"Also in this update", in this locale>
+
+- **<A smaller improvement>.** <One line.>
+- **Fixed** — <what the reader would have noticed, in plain language.>
+- <A renamed button, a changed default, a flow that moved — one line each.>
+
+{/*
+Shape: lede, two to four `##` stories, one roundup. Under ~500 words. Categories live in
+the frontmatter, never as headings here.
+
+Visuals: at most one per story, two or three per entry, and only where seeing it beats
+reading it. Each is an isolated component still (`shot.sh isolate`) shot by
+/screenshots — a detail, not a screen — in every locale and both themes, with
+`width`/`height` read from the actual file. Drop the `ThemedImage` import when the entry
+has none. Roundup bullets never carry a visual.
+
+Never link to GitHub, an issue, a PR, a commit or a username — this file is published on
+the public site, raw markdown included.
+*/}
