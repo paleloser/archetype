@@ -36,8 +36,7 @@ Before writing code, read:
 # How work flows
 
 - **`develop` is the trunk.** Branch from it, open PRs against it, squash-merge. `main` only tracks released commits.
-- **PRs start as drafts.** The `verify-server`, `verify-webapp` and `verify-web` workflows skip drafts and only run
-  for the app a PR touches. Build locally, then mark the PR ready.
+- **PRs start as drafts.** There is no CI: build every app you touched locally, then mark the PR ready.
 - **Image builds** are defined only in [`docker-bake.hcl`](./docker-bake.hcl).
 
 Built from the [archetype](https://github.com/paleloser/archetype).

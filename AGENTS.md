@@ -65,10 +65,8 @@ bar for those apps. Both pin an exact Node/npm version (`.nvmrc`, `engines`, `en
   `application.yml`/`.env.example` files. Don't hardcode a working value anywhere, even temporarily.
 - **Open PRs against the trunk, not the release branch.** The trunk is where work lands; the release branch
   (`main`) only tracks released commits.
-- **Open PRs as drafts** and mark them ready only after the relevant build command above passes locally. If the
-  repository is private, Actions minutes are billed against a finite allowance; the `verify-*` workflows skip draft
-  PRs entirely and a new push cancels the run it supersedes. Never mark a PR ready to "see if CI passes" — run the
-  build locally first, because that is the same check.
+- **There is no CI, on purpose: don't add GitHub Actions workflows** (they spend Actions minutes). The local build
+  above is the only check, so open PRs as drafts and mark them ready only after it passes.
 - **When a task is done, push the branch and open the PR** — don't leave finished work sitting as a local, unpushed
   branch.
 - **Every commit made by an AI agent must include a `Co-Authored-By:` trailer** identifying the agent (e.g.
@@ -79,7 +77,7 @@ bar for those apps. Both pin an exact Node/npm version (`.nvmrc`, `engines`, `en
   GitHub identity alone won't show it wasn't typed by a person, the notice belongs in the content itself.
 - **`docker-bake.hcl` is the only place image builds are defined.** Contexts, dockerfiles, tags, cache refs and
   labels for `server`/`web`/`webapp` live there. Adding build arguments or a new image means editing the bake file —
-  never inlining the change into a workflow. Verify with `IMAGE_TAG=test docker buildx bake --print`.
+  never inlining the change into a script. Verify with `IMAGE_TAG=test docker buildx bake --print`.
 
 ## Task triage protocol
 
@@ -117,6 +115,5 @@ Before executing any multi-step or non-trivial request:
 - New/changed server code respects the `domain`/`boot`/`infra`/`api` layering described above.
 - New user-facing strings exist in every locale.
 - The PR is open as a **draft** against the trunk; it is marked ready only once the checks above pass locally.
-- CI/CD changes are validated without spending Actions minutes to find out: `docker buildx bake --print` for anything
-  touching `docker-bake.hcl`, `shellcheck` for shell scripts, and `actionlint` (or at minimum a YAML parse) for
-  workflow edits. Never "push and see what the runner says".
+- Build tooling changes are validated locally: `docker buildx bake --print` for anything touching `docker-bake.hcl`,
+  `shellcheck` for shell scripts.

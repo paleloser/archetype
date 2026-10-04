@@ -4,49 +4,81 @@
     "config:recommended",
     "schedule:weekly"
   ],
-  "automerge": true,
-  "automergeType": "pr",
-  "platformAutomerge": false,
+  "automerge": false,
   "packageRules": [
     {
-      "description": "One PR a week for all non-major updates. Actions minutes are billed on private repos, and a PR per package means a full verify run per package.",
-      "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
+      "description": "One PR a week for all non-major updates: each one has to be built locally before merging, so fewer is better. Never auto-merged: with no CI, nothing would check them.",
+      "matchUpdateTypes": [
+        "minor",
+        "patch",
+        "pin",
+        "digest"
+      ],
       "groupName": "all non-major dependencies",
-      "schedule": ["before 6am on monday"],
-      "automerge": true
-    },
-    {
-      "description": "Majors land separately, monthly, and are never auto-merged: they are exactly the updates that need a human to look at a failing verify run.",
-      "matchUpdateTypes": ["major"],
-      "groupName": "major dependencies",
-      "schedule": ["before 6am on the first day of the month"],
+      "schedule": [
+        "before 6am on monday"
+      ],
       "automerge": false
     },
     {
-      "matchFileNames": ["web/**"],
+      "description": "Majors land separately, monthly, and are never auto-merged: they are exactly the updates that need a human to look at a failing verify run.",
+      "matchUpdateTypes": [
+        "major"
+      ],
+      "groupName": "major dependencies",
+      "schedule": [
+        "before 6am on the first day of the month"
+      ],
+      "automerge": false
+    },
+    {
+      "matchFileNames": [
+        "web/**"
+      ],
       "commitMessagePrefix": "[web]"
     },
     {
-      "matchFileNames": ["webapp/**"],
+      "matchFileNames": [
+        "webapp/**"
+      ],
       "commitMessagePrefix": "[webapp]"
     },
     {
-      "matchFileNames": ["server/pom.xml", "server/Dockerfile"],
+      "matchFileNames": [
+        "server/pom.xml",
+        "server/Dockerfile"
+      ],
       "commitMessagePrefix": "[server]"
     },
     {
-      "matchFileNames": ["server/backend/**"],
+      "matchFileNames": [
+        "server/backend/**"
+      ],
       "commitMessagePrefix": "[server][backend]"
     },
     {
       "groupName": "webapp Next.js stack",
-      "matchFileNames": ["webapp/**"],
-      "matchPackageNames": ["next", "eslint-config-next", "@next/*", "next-sitemap"]
+      "matchFileNames": [
+        "webapp/**"
+      ],
+      "matchPackageNames": [
+        "next",
+        "eslint-config-next",
+        "@next/*",
+        "next-sitemap"
+      ]
     },
     {
       "groupName": "web Next.js stack",
-      "matchFileNames": ["web/**"],
-      "matchPackageNames": ["next", "eslint-config-next", "@next/*", "next-sitemap"]
+      "matchFileNames": [
+        "web/**"
+      ],
+      "matchPackageNames": [
+        "next",
+        "eslint-config-next",
+        "@next/*",
+        "next-sitemap"
+      ]
     }
   ]
 }

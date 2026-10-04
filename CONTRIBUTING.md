@@ -44,17 +44,14 @@ Now, in terms of commit messages, we're not very restrictive. The only points to
 Every pull request should be linked to an existing issue, however this is not mandatory.
 If the pull request is not associated to an issue, make sure the PR body contains enough context, motivation, proposal details, etc.
 
-**Open your PR as a draft**, and mark it ready for review only once the branch builds locally:
+**Open your PR as a draft**, and mark it ready for review only once the branch builds locally
+(see [Local verification](#local-verification)):
 
 ```sh
 gh pr create --draft --base develop
 # ... then, when it is green locally:
 gh pr ready
 ```
-
-This is not ceremony. On a private repository every CI minute is billed against a finite
-monthly allowance, and the `verify-` workflows below do not run at all while a PR is a draft.
-Iterating in draft costs nothing; iterating in a ready PR costs a full build per push.
 
 ## Branching Strategy
 
@@ -78,15 +75,12 @@ The merge strategy for the PRs made to this branch is **merge**. This way we do 
 
 Every PR will need be reviewed and approved before getting merged. Code review is a praxis we trust on. It keeps the whole team in the loop, helps supporters and team members grow personal and technically, helps sharing concerns and best practices, etc. We strongly suggest doing this in any mature project.
 
-### `verify-` jobs
+### Local verification
 
-In addition to the code review, each PR will trigger a `verify-` workflow (slash job, slash step, you name it).
-These CI pipelines will ensure that all contributions are buildable and reliable. You can think of it as a definition of done.
+There is no CI: GitHub Actions minutes are not spent on this repository. The build is the definition of done, and
+it runs on the author's machine (or the agent's session) before a PR is marked ready:
 
-Two things to know about when they run:
+- `mvn verify` for `server`
+- `npm run lint && npm run build` for `webapp` and `web`
 
-- **Not while the PR is a draft.** They start when you mark it ready for review, and re-run on every
-  push after that. Verify locally first (`mvn verify` for `server`, `npm run lint && npm run build`
-  for `webapp`/`web`) so the first CI run is also the last one.
-- **A new push cancels the run it supersedes**, so amending and force-pushing a ready PR will not
-  leave three builds racing each other.
+Reviewers can trust a ready PR to build, and should re-run the build locally when in doubt.

@@ -15,8 +15,7 @@ sample resource (`Note`) going through every layer so each convention has a real
 | [`discovery`](./discovery) | Templates for the assumption register and evidence log the discovery agent keeps | Markdown |
 | [`scripts`](./scripts) | `new-product.sh`: scaffolds a product from this repository | Bash, Python |
 
-Plus CI (`verify-server`, `verify-webapp`, `verify-web`: draft PRs skipped, only the touched app built), Renovate
-(grouped weekly, majors monthly), image builds in one `docker-bake.hcl`, issue templates written for coding agents, and
+Plus Renovate (grouped weekly, majors monthly), image builds in one `docker-bake.hcl`, issue templates written for coding agents, and
 the house rules for humans and agents in [`AGENTS.md`](./AGENTS.md) and [`CONTRIBUTING.md`](./CONTRIBUTING.md).
 
 ## Starting a product
@@ -60,6 +59,12 @@ layouts are ours (`web/app/[lang]/(home)`). That's code we already wrote around 
 The deployment stack (`deploy/`: VPS Docker Compose, release scripts, Grafana/Loki), the seed data, ADRs and the
 in-memory Spring Cloud Stream binder are tied to how sincrona runs and what it does. Port them when a product needs
 them; `docker-bake.hcl` and the Dockerfiles are here so images build the same way.
+
+## No CI, on purpose
+
+There are no GitHub Actions workflows, here or in generated products: they spend Actions minutes. Each app's build
+(`mvn verify`, `npm run lint && npm run build`) is the definition of done and runs locally before a PR is marked
+ready (see [`CONTRIBUTING.md`](./CONTRIBUTING.md#local-verification)).
 
 ## Working on the archetype itself
 

@@ -17,7 +17,7 @@ The scaffolding is done by [`scripts/new-product.sh`](../../../scripts/new-produ
 | Slug | `tandem` | Lowercase identifier: npm package names, Maven `groupId` suffix, config prefix (`tandem.datasource`), database name. `[a-z][a-z0-9]*`. |
 | Java package | `io.tandem` | Base package; the server code moves to `<package>.server`. |
 | Domain | `tandem.app` | `https://<domain>`, `https://app.<domain>`, `https://api.<domain>`, `hello@<domain>`. |
-| Apps | `server,webapp,web` | Which archetypes to include. `.claude/`, the root docs and CI always come along. |
+| Apps | `server,webapp,web` | Which archetypes to include. `.claude/` and the root docs always come along. |
 
 Infer what you can from the arguments (a slug from the name, a package from the domain reversed),
 then confirm everything with the maintainer in **one** message before running anything.
@@ -36,7 +36,7 @@ anything it couldn't.
 
 ## 3. Verify
 
-Run, in the new repository, the build of every app it includes, exactly as CI would:
+Run, in the new repository, the build of every app it includes, as every PR does:
 
 ```sh
 (cd server && mvn verify)                      # needs Docker for the Testcontainers ITs; -DskipITs otherwise

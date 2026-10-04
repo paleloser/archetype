@@ -4,7 +4,7 @@ WORKDIR /server
 
 COPY . .
 
-# Checkstyle, Spotbugs and tests already ran in CI (verify-server): the image build only packages.
+# Checkstyle, Spotbugs and tests already ran locally (mvn verify) before merge: the image build only packages.
 RUN mvn -B -ntp clean package -DskipTests -Dcheckstyle.skip=true -Dspotbugs.skip=true
 
 FROM eclipse-temurin:21-jre-alpine AS runner

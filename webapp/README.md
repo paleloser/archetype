@@ -5,7 +5,7 @@ the `server` REST API through a generated client.
 ## Getting Started
 
 This project pins an exact Node/npm version in `.nvmrc`/`package.json#engines` so that local installs produce the same
-`package-lock.json` as CI and the production Docker build. Switch to it first (`nvm use`, `fnm use`, or
+`package-lock.json` as everyone else and the production Docker build. Switch to it first (`nvm use`, `fnm use`, or
 `volta install node@$(cat .nvmrc)`); npm refuses to run (`engine-strict`) if your Node/npm don't match.
 
 ```bash
@@ -24,8 +24,8 @@ npm run dev
 
 ## Validation
 
-There is no unit test runner: `npm run lint && npm run build` is the validation bar (it is what the `verify-webapp`
-workflow runs). Code style is enforced by ESLint, not Prettier: single quotes, no semicolons, 2-space indent, spaced JSX
+There is no unit test runner: `npm run lint && npm run build` is the validation bar (there is no CI: run it before
+marking a PR ready). Code style is enforced by ESLint, not Prettier: single quotes, no semicolons, 2-space indent, spaced JSX
 curly braces (`{ value }`).
 
 ## Layout

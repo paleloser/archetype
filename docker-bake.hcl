@@ -1,8 +1,8 @@
 # Single definition of how the three application images are built.
 #
-# Used by CI and by any local release script alike, so a local release
-# produces byte-for-byte what CI produces: same contexts, same tags, same
-# registry-backed cache. Change build inputs here and nowhere else.
+# Used by every release, from any machine, so every build produces the same
+# image: same contexts, same tags, same registry-backed cache. Change build
+# inputs here and nowhere else.
 #
 #   docker buildx bake --print                 # resolve without building
 #   IMAGE_TAG=$(git rev-parse HEAD) docker buildx bake --push
@@ -18,7 +18,7 @@ variable "REGISTRY" {
   default = "ghcr.io"
 }
 
-# `<owner>/<repo>` on GitHub. CI passes it from `github.repository`.
+# `<owner>/<repo>` on GitHub, for the GHCR image names.
 variable "REPOSITORY" {
   default = "acme/acme"
 }
@@ -29,7 +29,7 @@ variable "PLATFORM" {
   default = "linux/amd64"
 }
 
-# Commit the images are built from. Recorded as an OCI label so CD can tell
+# Commit the images are built from. Recorded as an OCI label so a release can tell
 # whether an app's sources changed since the image currently tagged :latest,
 # and retag instead of rebuilding when they did not.
 variable "GIT_SHA" {
