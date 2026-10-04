@@ -1,0 +1,22 @@
+---
+title: 'El eslogan de tu producto'
+description: 'Una frase que diga qué problema resuelve acme, y para quién.'
+full: true
+---
+
+import { Chip } from '@heroui/react'
+import { Icon } from '@iconify/react'
+import Link from 'next/link'
+import Heading from '../../../components/Heading'
+
+<section className='mx-auto max-w-(--fd-layout-width) px-4 py-16 flex flex-col items-center md:items-start gap-6'>
+  <Chip size='md'><Icon icon='gravity-ui:sparkles' />Nuevo</Chip>
+  <Heading>Vende el problema, no la función</Heading>
+  <p className='text-lg text-fd-muted-foreground max-w-prose text-center md:text-left'>
+    Sustituye esta página por la portada de tu producto. Está escrita en MDX, con componentes de HeroUI, y existe una por idioma.
+  </p>
+  <div className='flex flex-wrap gap-4'>
+    <Link href='https://app.acme.example' className='button button--primary'>Empieza gratis</Link>
+    <Link href='/es/docs' className='button button--secondary'>Lee la documentación</Link>
+  </div>
+</section>

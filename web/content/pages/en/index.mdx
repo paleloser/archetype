@@ -1,0 +1,22 @@
+---
+title: 'Your product tagline'
+description: 'One sentence saying what problem acme solves, and for whom.'
+full: true
+---
+
+import { Chip } from '@heroui/react'
+import { Icon } from '@iconify/react'
+import Link from 'next/link'
+import Heading from '../../../components/Heading'
+
+<section className='mx-auto max-w-(--fd-layout-width) px-4 py-16 flex flex-col items-center md:items-start gap-6'>
+  <Chip size='md'><Icon icon='gravity-ui:sparkles' />New</Chip>
+  <Heading>Sell the problem, not the feature</Heading>
+  <p className='text-lg text-fd-muted-foreground max-w-prose text-center md:text-left'>
+    Replace this page with your product's front page. It is written in MDX, with HeroUI components, and there is one per language.
+  </p>
+  <div className='flex flex-wrap gap-4'>
+    <Link href='https://app.acme.example' className='button button--primary'>Start for free</Link>
+    <Link href='/en/docs' className='button button--secondary'>Read the docs</Link>
+  </div>
+</section>

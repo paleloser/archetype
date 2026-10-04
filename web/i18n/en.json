@@ -1,0 +1,23 @@
+{
+  "displayName": "English",
+  "nav": {
+    "docs": "Documentation",
+    "blog": "Blog",
+    "about": "About us",
+    "openApp": "Open"
+  },
+  "banner": "Under construction",
+  "footer": {
+    "legal": "Legal notice",
+    "rights": "All rights reserved."
+  },
+  "blog": {
+    "title": "Blog",
+    "description": "What's new in the product.",
+    "read": "Read"
+  },
+  "notFound": {
+    "title": "404: Page Not Found"
+  },
+  "ui": {}
+}

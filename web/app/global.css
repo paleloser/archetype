@@ -1,0 +1,45 @@
+@import 'tailwindcss';
+@import 'fumadocs-ui/css/neutral.css';
+@import 'fumadocs-ui/css/preset.css';
+@import '@heroui/styles';
+
+/*
+ * Brand tokens, mirrored from webapp/app/globals.css so the site and the app look like one product. HeroUI reads
+ * these; Fumadocs reads its own --color-fd-* tokens, mapped onto the brand accent below.
+ */
+:root,
+.light,
+[data-theme="light"] {
+  --background: rgb(250, 250, 250);
+  --foreground: oklch(37.2% 0.044 257.287);
+  --muted: oklch(44.6% 0.03 256.802);
+}
+
+.dark,
+[data-theme="dark"] {
+  --background: rgb(17, 17, 17);
+  --foreground: oklch(92.9% 0.013 255.508);
+  --muted: oklch(62.771% 0.014 255.629);
+}
+
+:root {
+  --accent: #006ac1;
+  --color-fd-primary: #006ac1;
+}
+
+@theme {
+  --color-highlight: #4edfc7;
+  --color-highlight-foreground: #0b3b33;
+}
+
+html {
+  scrollbar-gutter: stable;
+}
+
+/* components/ThemedImage.tsx: next-themes sets `dark` or `light` on <html> before first paint */
+html.dark .themed-image-light,
+html:not(.dark) .themed-image-dark {
+  display: none;
+}
+
+@variant dark (&:where(.dark *));

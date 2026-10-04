@@ -1,0 +1,12 @@
+node_modules/
+.next/
+/build
+.source/
+.DS_Store
+*.pem
+npm-debug.log*
+.env*.local
+*.tsbuildinfo
+next-env.d.ts
+# Written by scripts/prebuild.mjs on every build.
+public/raw/

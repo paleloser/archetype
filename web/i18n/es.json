@@ -1,0 +1,32 @@
+{
+  "displayName": "Español",
+  "nav": {
+    "docs": "Documentación",
+    "blog": "Blog",
+    "about": "Sobre nosotros",
+    "openApp": "Abrir"
+  },
+  "banner": "En construcción",
+  "footer": {
+    "legal": "Aviso legal",
+    "rights": "Todos los derechos reservados."
+  },
+  "blog": {
+    "title": "Blog",
+    "description": "Novedades del producto.",
+    "read": "Leer"
+  },
+  "notFound": {
+    "title": "404: Página no encontrada"
+  },
+  "ui": {
+    "Search(search trigger)": "Buscar",
+    "No results found(search dialog)": "No hay resultados",
+    "On this page(table of contents)": "En esta página",
+    "Last updated on(page footer)": "Última actualización",
+    "Choose a language(language switcher)": "Elige un idioma",
+    "Next Page(pagination)": "Siguiente",
+    "Previous Page(pagination)": "Anterior",
+    "Back to Home(404 not found page)": "Volver al inicio"
+  }
+}
