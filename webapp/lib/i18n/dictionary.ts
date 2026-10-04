@@ -8,8 +8,8 @@ import { Locale } from './config'
  * exactly the same keys:
  *
  * ```ts
- * const es = { title: 'Tus bicicletas' }
- * const en: typeof es = { title: 'Your bikes' }
+ * const es = { title: 'Tus notas' }
+ * const en: typeof es = { title: 'Your notes' }
  *
  * const dictionary: Dictionary<typeof es> = { es, en }
  *

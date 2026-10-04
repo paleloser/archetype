@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Image from 'next/image'
 import { notFound } from 'next/navigation'
 
 import { getMDXComponents } from '@/components/mdx'
@@ -19,6 +20,12 @@ export default async function Page(props: PageProps<'/[lang]/blog/[slug]'>) {
       </time>
       <h1 className='mt-2 text-3xl font-bold'>{ entry.data.title }</h1>
       <p className='mt-2 text-lg text-fd-muted-foreground'>{ entry.data.description }</p>
+      {
+        entry.data.image &&
+        <div className='relative mt-6 h-56 w-full overflow-hidden rounded-2xl sm:h-72'>
+          <Image alt='' src={ entry.data.image } fill className='pointer-events-none select-none object-cover' />
+        </div>
+      }
       <article className='prose mt-8'>
         <MDX components={ getMDXComponents() } />
       </article>

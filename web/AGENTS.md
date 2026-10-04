@@ -9,7 +9,7 @@ rules that change how you write here:
 - **Navigation lives in `meta.json`.** Each docs folder orders its pages with a `meta.json` per locale (`"pages": [...]`,
   translated `"title"`). Adding a page means adding it to both `meta.json` files.
 - **Links carry the locale** (`/es/docs/...`), or are relative file links (`./other-page.mdx`) inside docs.
-- **Components in MDX are imported explicitly** (HeroUI, `@iconify/react`, `ThemedImage`, Fumadocs' `Steps`), except
+- **Components in MDX are imported explicitly** (HeroUI, `@iconify/react`, `@/components/ThemedImage`, Fumadocs' `Steps`), except
   Fumadocs' defaults (`Card`, `Cards`, `Callout`, code blocks), which every page gets.
 - **Site chrome strings** (navigation, footer) live in `i18n/<locale>.json`, never in components. `es.json` is the
   source shape.
