@@ -1,0 +1,45 @@
+@import 'tailwindcss';
+@import "@heroui/styles";
+
+/*
+ * Brand tokens. HeroUI reads its theme from these CSS variables: change the palette here, not in components.
+ * The same tokens are mirrored in web/app/globals.css so the app and the public site look like one product.
+ */
+:root,
+.light,
+.default,
+[data-theme="light"],
+[data-theme="default"],
+:host(.light),
+:host(.default),
+:host([data-theme="light"]),
+:host([data-theme="default"]) {
+  color-scheme: light;
+
+  --background: rgb(250, 250, 250);
+  --foreground: oklch(37.2% 0.044 257.287);
+  --muted: oklch(44.6% 0.03 256.802);
+}
+
+
+.dark,
+[data-theme="dark"],
+:host(.dark),
+:host([data-theme="dark"]) {
+  color-scheme: dark;
+
+  --background: rgb(17, 17, 17);
+  --foreground: oklch(92.9% 0.013 255.508);
+  --muted: oklch(62.771% 0.014 255.629);
+}
+
+@theme {
+  --color-highlight: #4edfc7;
+  --color-highlight-foreground: #0b3b33;
+
+  --default-font-family: var(--font-sans), sans-serif;
+}
+
+:root {
+  --accent: #006ac1;
+}
