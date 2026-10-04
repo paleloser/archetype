@@ -55,5 +55,12 @@ curly braces (`{ value }`).
 
 ## Theming
 
-Brand colors are CSS variables in `app/globals.css`, which HeroUI reads. Light and dark themes are handled by
-`next-themes` (`class` strategy), defaulting to the system preference.
+Inherited from sincrona. Brand colors are CSS variables in `app/globals.css`, which HeroUI reads (`--accent`, the
+background, foreground and muted tones per theme); `web/app/global.css` mirrors them. Text is Inter, headings are
+Funnel Display (both via `next/font` in `app/layout.tsx`). Light and dark themes are handled by `next-themes` (`class`
+strategy), defaulting to the system preference.
+
+The app shell lives in `components/`: `Drawer` (the navigation: grouped items with an icon, a title and a
+description; a slide-over on mobile), `Header` (drawer toggle and the avatar menu, whose fallback avatars are the
+images in `public/images`) and `Breadcrumbs` (extend `buildTrail` as routes are added; pages name entities with
+`BreadcrumbLabel`).

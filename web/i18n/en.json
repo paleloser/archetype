@@ -9,7 +9,8 @@
   "banner": "Under construction",
   "footer": {
     "legal": "Legal notice",
-    "rights": "All rights reserved."
+    "terms": "Terms and Conditions",
+    "privacy": "Privacy Policy"
   },
   "blog": {
     "title": "Blog",

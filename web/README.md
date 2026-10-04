@@ -42,6 +42,14 @@ npm run lint && npm run build   # the validation bar; there are no unit tests
 * `scripts/prebuild.mjs`: copies every `.mdx` to `public/raw/`, so `/raw/<collection>/<locale>/<path>.mdx` serves the
   source of any page to agents.
 
+## Theming
+
+Inherited from sincrona and shared with the webapp: `app/global.css` holds the same brand tokens as
+`webapp/app/globals.css` and maps Fumadocs' `--color-fd-*` tokens onto them, so docs, landing page and HeroUI
+components use one palette. Text is Inter and headings Funnel Display (`app/[lang]/layout.tsx`). The banner on top of
+every page takes its text from `banner` in `i18n/<locale>.json` (empty hides it). `public/fonts` is served with CORS
+for the app and the identity provider's login page (`next.config.mjs`).
+
 ## Adding a language
 
 Add it to `locales` in `site.config.ts`, add `i18n/<locale>.json` and its entry in `lib/i18n-ui.ts` and

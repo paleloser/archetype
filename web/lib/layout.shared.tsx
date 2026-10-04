@@ -1,5 +1,8 @@
+import { Button } from '@heroui/react'
+import { Icon } from '@iconify/react'
 import type { BaseLayoutProps } from 'fumadocs-ui/layouts/shared'
 import Image from 'next/image'
+import Link from 'next/link'
 
 import { getDictionary } from '@/lib/dictionaries'
 import { appUrl, siteName, type Locale } from '@/site.config'
@@ -22,7 +25,16 @@ export function baseOptions(locale: Locale): BaseLayoutProps {
       { text: dict.nav.docs, url: `/${locale}/docs`, active: 'nested-url' },
       { text: dict.nav.blog, url: `/${locale}/blog`, active: 'nested-url' },
       { text: dict.nav.about, url: `/${locale}/about` },
-      { text: dict.nav.openApp, url: appUrl, external: true, type: 'button' },
+      {
+        // The way into the app, as a HeroUI button
+        type: 'custom',
+        secondary: true,
+        children: (
+          <Link href={ appUrl }>
+            <Button size='sm'><Icon icon='gravity-ui:triangle-right' /> { dict.nav.openApp }</Button>
+          </Link>
+        ),
+      },
     ],
   }
 }

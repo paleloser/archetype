@@ -9,7 +9,8 @@
   "banner": "En construcción",
   "footer": {
     "legal": "Aviso legal",
-    "rights": "Todos los derechos reservados."
+    "terms": "Términos y condiciones",
+    "privacy": "Política de privacidad"
   },
   "blog": {
     "title": "Blog",

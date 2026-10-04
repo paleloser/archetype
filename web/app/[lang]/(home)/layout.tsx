@@ -1,5 +1,5 @@
+import { Description, Link } from '@heroui/react'
 import { HomeLayout } from 'fumadocs-ui/layouts/home'
-import Link from 'next/link'
 
 import { getDictionary } from '@/lib/dictionaries'
 import { baseOptions } from '@/lib/layout.shared'
@@ -12,14 +12,19 @@ export default async function Layout({ children, params }: LayoutProps<'/[lang]'
   return (
     <HomeLayout { ...baseOptions(lang) }>
       { children }
-      <footer className='mt-auto border-t border-fd-border'>
-        <div className='mx-auto max-w-(--fd-layout-width) px-4 py-8 flex flex-row justify-between gap-4 text-sm text-fd-muted-foreground'>
+      <footer className='mt-auto border-t border-fd-border font-(family-name:--font-funnel-display)'>
+        <div className='mx-auto max-w-(--fd-layout-width) px-4 py-8 flex flex-row justify-between gap-1'>
           <div className='flex flex-col items-start gap-1'>
             <Link href={ `/${lang}/legal` }>{ dict.footer.legal }</Link>
+            <Link href={ `/${lang}/terms` }>{ dict.footer.terms }</Link>
+            <Link href={ `/${lang}/privacy` }>{ dict.footer.privacy }</Link>
           </div>
           <div className='flex flex-col items-end gap-1'>
-            <a href={ `mailto:${contactEmail}` }>{ contactEmail }</a>
-            <span>{ new Date().getFullYear() } © { siteName }. { dict.footer.rights }</span>
+            <Link href={ `mailto:${contactEmail}` }>
+              { contactEmail }
+              <Link.Icon />
+            </Link>
+            <Description>{ new Date().getFullYear() } © { siteName }.</Description>
           </div>
         </div>
       </footer>
