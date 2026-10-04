@@ -1,0 +1,49 @@
+name: Server PR Verification
+
+# Draft pull requests do not run CI. Open PRs as drafts (`gh pr create --draft`)
+# and mark them ready for review once the branch builds locally: Actions minutes
+# are billed on private repos, and a draft cannot be merged anyway.
+on:
+  pull_request:
+    # `ready_for_review` fires only on the draft -> ready transition, so `opened`
+    # must stay in the list for PRs that are opened ready (e.g. Renovate's).
+    # Drafts are filtered by the job-level `if` below, not by the trigger.
+    types: [opened, synchronize, reopened, ready_for_review]
+    branches:
+      - develop
+      - main
+    paths:
+      - 'server/**'
+
+# Pushing again to a PR cancels the run it supersedes. `github.workflow` is part
+# of the key because concurrency groups are repository-global: without it, this
+# workflow would cancel the web/webapp runs of the same PR.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+defaults:
+  run:
+    working-directory: ./server
+env:
+  JAVA_VERSION: '21'
+jobs:
+  pr_verify:
+    name: PR Verify
+    if: ${{ !github.event.pull_request.draft }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out source code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+    
+      - name: Set up JDK
+        uses: actions/setup-java@v6
+        with:
+          java-version: ${{ env.JAVA_VERSION }}
+          distribution: 'liberica'
+          cache: 'maven'
+
+      - name: Build with Maven
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: mvn --batch-mode --no-transfer-progress --update-snapshots verify
