@@ -2,9 +2,10 @@
 @import "@heroui/styles";
 
 /*
- * Brand tokens. HeroUI reads its theme from these CSS variables: change the palette here, not in components.
- * The same tokens are mirrored in web/app/globals.css so the app and the public site look like one product.
+ * Brand tokens and typography, inherited from sincrona. HeroUI reads its theme from these CSS variables: change the
+ * palette here, not in components. web/app/global.css mirrors them so the app and the site look like one product.
  */
+
 :root,
 .light,
 .default,
@@ -37,9 +38,18 @@
   --color-highlight: #4edfc7;
   --color-highlight-foreground: #0b3b33;
 
-  --default-font-family: var(--font-sans), sans-serif;
+  --default-font-family: var(--font-inter), "Inter", sans-serif;
 }
 
 :root {
   --accent: #006ac1;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-funnel-display), "Funnel Display", sans-serif;
 }
