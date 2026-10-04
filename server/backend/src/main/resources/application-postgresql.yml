@@ -1,0 +1,12 @@
+# The PostgreSQL started by `docker compose up -d` (see docker-compose.yml).
+spring:
+  datasource:
+    url: jdbc:postgresql://127.0.0.1:5435/acme
+    username: acme
+    password: pass
+  jpa:
+    properties:
+      hibernate:
+        format_sql: true
+acme:
+  datasource: postgresql

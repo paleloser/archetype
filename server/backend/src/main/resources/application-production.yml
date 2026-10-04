@@ -1,0 +1,6 @@
+logging:
+  level:
+    com.acme.server: INFO
+acme:
+  cors:
+    allowed-origin-patterns: https://app.acme.example

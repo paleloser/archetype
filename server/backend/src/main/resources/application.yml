@@ -1,0 +1,42 @@
+# Production-like defaults. Every secret is read from the environment with an empty default: this file is committed, so
+# anything written in it is public forever. Profiles below override these for local runs and tests.
+logging:
+  level:
+    root: INFO
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health
+  endpoint:
+    health:
+      show-details: never
+spring:
+  datasource:
+    driverClassName: org.postgresql.Driver
+    url: ${ACME_DATASOURCE_URL:jdbc:postgresql://127.0.0.1:5435/acme}
+    username: ${ACME_DATASOURCE_USERNAME:acme}
+    password: ${ACME_DATASOURCE_PASSWORD:}
+  flyway:
+    baseline-on-migrate: true
+  jpa:
+    open-in-view: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+  profiles:
+    active: local
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          # Any OpenID Connect provider (Auth0, Cognito, Keycloak...). Its tokens' `sub` is the user identity.
+          issuer-uri: ${ACME_AUTH_ISSUER_URI:https://auth.acme.example/}
+acme:
+  authentication:
+    enabled: true
+  # inmemory | postgresql. Each adapter in infra/ is selected with @ConditionalOnProperty on this value.
+  datasource: postgresql
+  logging:
+    api:
+      enabled: true

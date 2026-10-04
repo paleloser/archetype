@@ -1,0 +1,11 @@
+# Local PostgreSQL for `mvn spring-boot:run -Dspring-boot.run.profiles=local,postgresql`.
+services:
+  postgresql:
+    image: postgres:18
+    environment:
+      - POSTGRES_DB=acme
+      - POSTGRES_USER=acme
+      - POSTGRES_PASSWORD=pass
+    ports:
+      - 5435:5432
+    restart: unless-stopped

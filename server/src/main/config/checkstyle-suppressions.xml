@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!DOCTYPE suppressions PUBLIC
+  "-//Checkstyle//DTD SuppressionFilter Configuration 1.2//EN"
+  "https://checkstyle.org/dtds/suppressions_1_2.dtd">
+
+<!-- About Using Suppression Filters: -->
+<!-- https://maven.apache.org/plugins/maven-checkstyle-plugin/examples/suppressions-filter.html -->
+<suppressions>
+  <!-- Example: Suppress function names that follow BDD Gherkin/Cucumber conventions -->
+  <!-- <suppress checks="MethodNameCheck" files=".*Steps.java"/> -->
+  <!-- Example: Suppress very long function names in test files -->
+  <!-- <suppress checks="LineLengthCheck" files="[/\\]test[/\\]"/> -->
+  <!-- Example: Suppress a specific message in all files -->
+  <!-- <suppress message="Interface type name 'MessageType' must match pattern"/> -->
+
+  <!-- Suppress header check in package-info files -->
+  <suppress checks="RegexpHeader" files="package-info.java"/>
+
+  <!-- YAML test resources are normally generated, not manually modified -->
+  <suppress checks=".*" files=".*\/test\/resources\/.*\.yml"/>
+
+  <!-- Do not check Javadocs on tests -->
+  <suppress checks=".*Javadoc.*" files=".*\/src\/test\/.*" />
+
+  <!-- Do not check AbbreviationAsWordInName on tests -->
+  <suppress checks="AbbreviationAsWordInName" files=".*\/src\/test\/.*" />
+
+  <!-- Do not check SQL migrations -->
+  <suppress checks=".*" files=".*\.sql" />
+
+  <!-- Javadocs are encouraged, not enforced, on production code. Remove this line to enforce them. -->
+  <suppress checks=".*Javadoc.*" files="com\/acme\/.*" />
+
+</suppressions>

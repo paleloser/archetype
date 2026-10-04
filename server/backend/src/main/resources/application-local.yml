@@ -1,0 +1,15 @@
+# `mvn spring-boot:run` with no database, no identity provider and no credentials: in-memory storage, authentication off.
+# To run against the local PostgreSQL from docker-compose.yml instead, add the `postgresql` profile:
+#   mvn spring-boot:run -Dspring-boot.run.profiles=local,postgresql
+logging:
+  level:
+    com.acme.server: DEBUG
+    org.hibernate.SQL: INFO # Set to DEBUG if you want to show sql queries
+
+spring:
+  config:
+    import: optional:classpath:.env[.properties]
+acme:
+  authentication:
+    enabled: false
+  datasource: inmemory

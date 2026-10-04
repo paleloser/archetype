@@ -1,0 +1,16 @@
+.DS_Store
+*/**/.DS_Store
+.vscode
+.idea
+
+# Local credentials. Never commit one.
+.env
+.env.local
+
+# Scratch from the `screenshots` skill: its captures, and playwright-cli's own logs and browser
+# profile. Assets that are kept are copied deliberately into web/public/images/.
+.screenshots/
+.playwright-cli/
+
+# Scratch from the `cm` skill: social media assets to upload by hand. Never committed.
+.cm/

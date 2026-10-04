@@ -1,0 +1,5 @@
+target/
+.idea/
+*.iml
+.env
+backend/src/main/resources/.env.properties
